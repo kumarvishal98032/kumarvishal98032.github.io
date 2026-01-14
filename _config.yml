@@ -7,6 +7,13 @@ description: >
 url: "https://kumarvishal98032.github.io"
 baseurl: ""
 
-theme: minimal-mistakes-jekyll
+remote_theme: mmistakes/minimal-mistakes@4.26.2
+
 plugins:
+  - jekyll-include-cache
   - jekyll-seo-tag
+
+author:
+  name: Vishal Kumar
+  bio: Assistant Professor, Lovely Professional University
+  location: India
