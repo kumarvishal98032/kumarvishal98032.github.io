@@ -16,6 +16,7 @@ plugins:
 author:
   name: Dr. Vishal Kumar
   bio: Assistant Professor, Lovely Professional University
+  avatar: /profile.jpg
   location: India
 
 # Navigation
