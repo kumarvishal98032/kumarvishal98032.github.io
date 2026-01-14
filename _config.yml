@@ -1,4 +1,4 @@
-title: Dr. Vishal Kumar
+title: Theoretical Biophysical Chemistry Lab
 email: your-email@lpu.co.in
 description: >
   Assistant Professor at Lovely Professional University.
@@ -14,7 +14,7 @@ plugins:
   - jekyll-seo-tag
 
 author:
-  name: Dr. Vishal Kumar
+  name:
   bio: Assistant Professor, Lovely Professional University
   avatar: /profile.jpg
   location: India
