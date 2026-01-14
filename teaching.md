@@ -5,10 +5,9 @@ permalink: /teaching/
 ---
 
 ## Courses Taught
-- Mathematical Modeling  
-- Numerical Methods  
-- Fluid Dynamics  
-- Computational Methods  
+- Engineering Chemistry
+- Physical Chemistry
+- Engineering Chemistry Practical  
 
 ## Teaching Philosophy
 My teaching emphasizes conceptual clarity, mathematical rigor,
