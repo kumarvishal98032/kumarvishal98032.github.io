@@ -1,4 +1,11 @@
-
+title: Dr. Vishal Kumar
+email: your-email@lpu.co.in
+description: >
+  Assistant Professor at Lovely Professional University.
+  Research in mathematical modeling, reaction–diffusion systems,
+  and fluid dynamics.
+url: "https://kumarvishal98032.github.io"
+baseurl: ""
 
 remote_theme: mmistakes/minimal-mistakes@4.26.2
 
