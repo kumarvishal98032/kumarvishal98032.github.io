@@ -3,9 +3,7 @@ layout: home
 author_profile: true
 ---
 
-# Dr. Vishal Kumar
-**Assistant Professor**  
-Lovely Professional University, India
+
 
 ## About Me
 I am an Assistant Professor at Lovely Professional University.  
