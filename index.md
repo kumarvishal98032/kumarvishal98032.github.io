@@ -3,7 +3,7 @@ layout: home
 author_profile: true
 ---
 
-# Vishal Kumar
+%# Vishal Kumar
 **Assistant Professor**  
 Lovely Professional University, India
 
