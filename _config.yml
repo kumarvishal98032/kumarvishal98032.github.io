@@ -1,4 +1,4 @@
-title: Vishal Kumar
+title: Dr. Vishal Kumar
 email: your-email@lpu.co.in
 description: >
   Assistant Professor at Lovely Professional University.
@@ -14,7 +14,7 @@ plugins:
   - jekyll-seo-tag
 
 author:
-  name: Vishal Kumar
+  name: Dr. Vishal Kumar
   bio: Assistant Professor, Lovely Professional University
   location: India
 
