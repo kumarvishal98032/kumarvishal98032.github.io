@@ -1,3 +1,7 @@
+---
+layout: home
+author_profile: true
+---
 
 # Dr. Vishal Kumar
 **Assistant Professor**  
