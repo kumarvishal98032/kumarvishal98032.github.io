@@ -20,8 +20,8 @@ I am actively involved in teaching, student mentoring, and research collaboratio
 
 ## Academic Profiles
 
-- 🎓 **Google Scholar**:  
-  https://scholar.google.com/citations?user=FwjgWhUAAAAJ&hl=en
+- 🎓 **[Google Scholar]**:  
+  (https://scholar.google.com/citations?user=FwjgWhUAAAAJ&hl=en)
 
 - 🆔 **ORCID**:  
   https://orcid.org/0000-0002-9762-3989
