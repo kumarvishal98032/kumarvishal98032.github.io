@@ -1,1 +1,36 @@
+<div style="text-align:center; font-size:0.85em; margin-top:10px;">
+  👁️ Visitors: <span id="visitor-count">Loading...</span>
+</div>
+
+<script>
+(function () {
+  const siteKey = "kumarvishal98032.github.io";
+  const storageKey = "site_visited_once";
+
+  const counterSpan = document.getElementById("visitor-count");
+
+  if (!counterSpan) return;
+
+  if (!localStorage.getItem(storageKey)) {
+    fetch(`https://api.countapi.xyz/hit/${siteKey}/visits`)
+      .then(response => response.json())
+      .then(data => {
+        counterSpan.textContent = data.value;
+        localStorage.setItem(storageKey, "true");
+      })
+      .catch(() => {
+        counterSpan.textContent = "—";
+      });
+  } else {
+    fetch(`https://api.countapi.xyz/get/${siteKey}/visits`)
+      .then(response => response.json())
+      .then(data => {
+        counterSpan.textContent = data.value;
+      })
+      .catch(() => {
+        counterSpan.textContent = "—";
+      });
+  }
+})();
+</script>
 
