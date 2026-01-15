@@ -3,6 +3,7 @@ layout: single
 title: ""
 header:
   image: /banner.jpg
+  author_profile: true
 ---
 
 
