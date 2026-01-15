@@ -1,7 +1,10 @@
 ---
-layout: home
-author_profile: true
+layout: single
+title: ""
+header:
+  image: /banner.jpg
 ---
+
 
 # Dr. Vishal Kumar
 **Assistant Professor**  
