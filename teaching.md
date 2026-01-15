@@ -6,8 +6,7 @@ permalink: /teaching/
 
 ## Courses Taught
 - Engineering Chemistry
-- Physical Chemistry
-- Engineering Chemistry Practical  
+- Physical Chemistry  
 
 ## Teaching Philosophy
 My teaching emphasizes conceptual clarity, mathematical rigor,
