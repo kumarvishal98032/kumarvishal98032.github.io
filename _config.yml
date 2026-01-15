@@ -24,3 +24,5 @@ header:
   nav: main
 minimal_mistakes_skin: air
 
+head_scripts:
+  - /assets/css/custom.css
