@@ -1,0 +1,20 @@
+VishalKumar:
+  name        : "Dr. Vishal Kumar"
+  avatar      : "/profile.jpg"
+  bio         : "Assistant Professor, Lovely Professional University"
+  location    : "Punjab, India"
+  email       : "your-email@lpu.co.in"
+
+  links:
+    - label: "Google Scholar"
+      icon: "fas fa-graduation-cap"
+      url: "https://scholar.google.com/citations?user=FwjgWhUAAAAJ&hl=en"
+
+    - label: "ORCID"
+      icon: "fab fa-orcid"
+      url: "https://orcid.org/0000-0002-9762-3989"
+
+    - label: "ResearchGate"
+      icon: "fab fa-researchgate"
+      url: "https://www.researchgate.net/profile/Vishal_Kumar54"
+
