@@ -1,9 +1,10 @@
 ---
 layout: single
 title: ""
+author: VishalKumar
+author_profile: true
 header:
   image: /banner.jpg
-  author_profile: true
 ---
 
 
