@@ -20,3 +20,7 @@ VishalKumar:
       icon: "fab fa-researchgate"
       url: "https://www.researchgate.net/profile/Vishal_Kumar54"
 
+    - label: "Scopus"
+      icon: "fas fa-database"
+      url: "https://www.scopus.com/authid/detail.uri?authorId=57564248900"
+
