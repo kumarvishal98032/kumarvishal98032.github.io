@@ -1,7 +1,10 @@
 VishalKumar:
   name        : "Dr. Vishal Kumar"
   avatar      : "/profile.jpg"
-  bio         : "Assistant Professor, Department of Chemistry, School of Chemical Engineering and Physical Sciences, Lovely Professional University"
+  bio         : "Assistant Professor, 
+                Department of Chemistry, 
+                School of Chemical Engineering and Physical Sciences, 
+                Lovely Professional University"
   location    : "Punjab, India"
 
   links:
