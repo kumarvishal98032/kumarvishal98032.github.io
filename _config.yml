@@ -1,4 +1,4 @@
-title: Theoretical Biophysical Chemistry Lab
+title: Theoretical Biophysical Chemistry Group
 email: your-email@lpu.co.in
 description: >
   Assistant Professor at Lovely Professional University.
@@ -17,7 +17,7 @@ author:
   name: "Dr. Vishal Kumar"
   bio: "Assistant Professor, Lovely Professional University"
   avatar: "/profile.jpg"
-  location: India
+  location: "India"
 
 # Navigation
 header:
