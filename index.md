@@ -9,7 +9,10 @@ header:
 
 # Dr. Vishal Kumar
 **Assistant Professor**  
-Lovely Professional University, India
+Lovely Professional University,
+Jalandhar-Delhi, G.T. Road,
+Phagwara, Punjab
+(INDIA) -144411.
 
 
 ## About Me
