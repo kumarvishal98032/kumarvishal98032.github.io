@@ -11,5 +11,6 @@ main:
     url: /cv/
   - title: "Contact"
     url: /contact/
-  - title: "Fluid Demo"
+  - title: "Interactive Lab"
     url: /fluid-demo/
+
