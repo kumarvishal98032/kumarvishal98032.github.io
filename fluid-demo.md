@@ -1,151 +1,108 @@
 ---
 layout: single
-title: "Interactive Modeling Lab"
+title: "Fluid Flow & Reaction–Diffusion Demo"
 permalink: /fluid-demo/
 ---
 
-<h2>🌊 Fluid Flow Intuition: Channel Flow</h2>
+## 🌊 Fluid Flow Intuition (2D Channel Flow)
 
-<button onclick="toggleEq()">🧮 Show / Hide Governing Equations</button>
+**Interactive demo** illustrating pressure-driven viscous flow,
+Reynolds number intuition, and velocity profiles.
 
-<div id="equations" style="display:none; margin-top:10px;">
-  <p><strong>Reduced Navier–Stokes:</strong></p>
-  <p style="font-family:serif;">μ ∂²u/∂y² = ∂p/∂x</p>
-</div>
+### Pressure Gradient
+<input type="range" id="pressure" min="0.1" max="2" step="0.1" value="1">
 
-<hr>
+### Reynolds Number
+<input type="range" id="reynolds" min="10" max="500" step="10" value="100">
 
-<label>Pressure Gradient:</label>
-<input type="range" id="pg" min="1" max="10" value="5">
-<span id="pgVal">5</span>
+<canvas id="flowCanvas" width="500" height="200"
+style="border:1px solid #ccc;"></canvas>
 
-<br><br>
+---
 
-<label>Reynolds Number (intuition):</label>
-<input type="range" id="re" min="1" max="10" value="3">
-<span id="reVal">Low (Laminar)</span>
+## 🧪 Reaction–Diffusion (Turing Patterns)
 
-<br><br>
+Emergence of spatial patterns via **diffusion-driven instability**.
 
-<canvas id="flowCanvas" width="700" height="300"
-        style="border:1px solid #ccc;"></canvas>
+<canvas id="rdCanvas"
+style="border:1px solid #ccc;"></canvas>
 
-<br><br>
-
-<h3>📈 Velocity Profile</h3>
-<canvas id="profileCanvas" width="300" height="250"
-        style="border:1px solid #ccc;"></canvas>
-
-<hr>
-
-<h2>🧪 Reaction–Diffusion (Turing Pattern Demo)</h2>
-
-<canvas id="rdCanvas" width="300" height="300"
-        style="border:1px solid #ccc;"></canvas>
+---
 
 <script>
-function toggleEq() {
-  const e = document.getElementById("equations");
-  e.style.display = e.style.display === "none" ? "block" : "none";
-}
+/* ========= FLUID FLOW ========= */
 
 const canvas = document.getElementById("flowCanvas");
 const ctx = canvas.getContext("2d");
-const pCanvas = document.getElementById("profileCanvas");
-const pCtx = pCanvas.getContext("2d");
 
-const pg = document.getElementById("pg");
-const re = document.getElementById("re");
-const pgVal = document.getElementById("pgVal");
-const reVal = document.getElementById("reVal");
-
-let time = 0;
-
-function drawFlow(P, R) {
+function drawFlow() {
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  const H = canvas.height;
 
-  for (let y=0; y<=H; y+=12) {
-    const eta = (y-H/2)/(H/2);
-    const u = P*(1-eta*eta);
-    ctx.strokeStyle = `rgb(${60+u*15},100,200)`;
+  const P = document.getElementById("pressure").value;
+  const Re = document.getElementById("reynolds").value;
 
+  for (let y = 0; y < canvas.height; y++) {
+    const u = P * (1 - Math.pow((y - canvas.height/2)/(canvas.height/2),2));
+    ctx.strokeStyle = `rgba(0,0,255,${u/Re})`;
     ctx.beginPath();
-    ctx.moveTo(80,y);
-    ctx.lineTo(80+u*25,y);
+    ctx.moveTo(0,y);
+    ctx.lineTo(u*150,y);
     ctx.stroke();
   }
 
-  for (let y=40; y<H; y+=40) {
-    ctx.beginPath();
-    let x=80;
-    ctx.moveTo(x,y);
+  requestAnimationFrame(drawFlow);
+}
 
-    for (let i=0;i<40;i++) {
-      const f = R>6 ? Math.sin(i*0.6+y*0.05)*(R-6):0;
-      x += 2;
-      ctx.lineTo(x,y+f);
-    }
-    ctx.strokeStyle="rgba(0,0,0,0.4)";
-    ctx.stroke();
+drawFlow();
+
+/* ========= REACTION–DIFFUSION ========= */
+
+const rd = document.getElementById("rdCanvas");
+const rctx = rd.getContext("2d");
+
+const size = 150;
+const scale = 2;
+rd.width = size * scale;
+rd.height = size * scale;
+
+let U = new Float32Array(size*size);
+let V = new Float32Array(size*size);
+
+for (let i=0;i<size*size;i++){
+  U[i]=1; V[i]=0;
+}
+
+// Seed
+for (let y=65;y<85;y++){
+  for (let x=65;x<85;x++){
+    V[x+y*size]=1;
   }
 }
 
-function drawProfile(P) {
-  pCtx.clearRect(0,0,pCanvas.width,pCanvas.height);
-  const H = pCanvas.height;
-
-  pCtx.beginPath();
-  for (let y=0;y<=H;y++) {
-    const eta=(y-H/2)/(H/2);
-    const u=P*(1-eta*eta);
-    const x=20+u*15;
-    if (y===0) pCtx.moveTo(x,y);
-    else pCtx.lineTo(x,y);
-  }
-  pCtx.strokeStyle="#E53935";
-  pCtx.stroke();
+function lap(A,x,y){
+  const i=x+y*size;
+  return -A[i]
+    +A[i-1]+A[i+1]
+    +A[i-size]+A[i+size];
 }
 
-function update() {
-  pgVal.textContent=pg.value;
-  reVal.textContent=re.value<4?"Low (Laminar)":re.value<7?"Moderate":"High (Transition)";
-}
+function stepRD(){
+  for(let y=1;y<size-1;y++){
+    for(let x=1;x<size-1;x++){
+      const i=x+y*size;
+      const u=U[i], v=V[i];
+      const uvv=u*v*v;
 
-function animate() {
-  time+=0.05;
-  drawFlow(pg.value*(1+0.3*Math.sin(time)), re.value);
-  drawProfile(pg.value);
-  update();
-  requestAnimationFrame(animate);
-}
-animate();
+      U[i]+=0.16*lap(U,x,y)-uvv+0.035*(1-u);
+      V[i]+=0.08*lap(V,x,y)+uvv-0.065*v;
 
-/* Reaction–Diffusion */
-const rd=document.getElementById("rdCanvas");
-const rctx=rd.getContext("2d");
-const N=100;
-let U=[],V=[];
-for(let i=0;i<N*N;i++){U[i]=1;V[i]=0;}
-for(let i=4500;i<5500;i++)V[i]=1;
-
-function lap(A,i){
-  return A[i]*-1+A[i-1]+A[i+1]+A[i-N]+A[i+N];
-}
-
-function rdStep(){
-  for(let y=1;y<N-1;y++){
-    for(let x=1;x<N-1;x++){
-      const i=x+y*N;
-      const uvv=U[i]*V[i]*V[i];
-      U[i]+=0.16*lap(U,i)-uvv+0.035*(1-U[i]);
-      V[i]+=0.08*lap(V,i)+uvv-0.065*V[i];
-      const c=Math.floor((U[i]-V[i])*255);
+      const c=Math.max(0,Math.min(255,Math.floor((U[i]-V[i])*255)));
       rctx.fillStyle=`rgb(${c},${c},${c})`;
-      rctx.fillRect(x*3,y*3,3,3);
+      rctx.fillRect(x*scale,y*scale,scale,scale);
     }
   }
-  requestAnimationFrame(rdStep);
+  requestAnimationFrame(stepRD);
 }
-rdStep();
+
+stepRD();
 </script>
